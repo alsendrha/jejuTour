@@ -1,13 +1,14 @@
 "use client";
 
 import { useGetDetailData } from "@/api";
+import { GoogleMap, LoadScriptNext, Marker } from "@react-google-maps/api";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const DetailContent = () => {
   const name = usePathname().split("/")[2];
   const { data, isLoading } = useGetDetailData(name);
-  console.log("data", data);
+  console.log("dd", process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
   if (isLoading) return <div>Loading...</div>;
   return (
     <div className="w-full flex justify-center pt-[90px]">
@@ -32,6 +33,30 @@ const DetailContent = () => {
             <div>
               <p>{item.introduction}</p>
               <p>{item.alltag}</p>
+            </div>
+            <div>
+              <LoadScriptNext
+                googleMapsApiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
+              >
+                <GoogleMap
+                  mapContainerStyle={{
+                    width: "100%",
+                    height: "500px",
+                  }}
+                  center={{
+                    lat: Number(item.latitude),
+                    lng: Number(item.longitude),
+                  }}
+                  zoom={18}
+                >
+                  <Marker
+                    position={{
+                      lat: Number(item.latitude),
+                      lng: Number(item.longitude),
+                    }}
+                  />
+                </GoogleMap>
+              </LoadScriptNext>
             </div>
           </div>
         ))}
