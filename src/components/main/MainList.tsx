@@ -37,7 +37,7 @@ const MainList = () => {
               .flat()
               .filter(
                 (item: JeJuData) =>
-                  item.alltag && item.alltag.includes(selectedTag)
+                  item?.alltag && item?.alltag.includes(selectedTag)
               )
               .map((item: JeJuData) => (
                 <MainListItem
