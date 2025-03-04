@@ -44,11 +44,11 @@ export const getDetailData = async (contentId: string) => {
   }
 };
 
-export const useGetData = (category: string) => {
+export const useGetData = (category: string, params: number) => {
   return useInfiniteQuery({
-    queryKey: ["jeju"],
+    queryKey: ["jeju", category, params],
     queryFn: ({ pageParam = 1 }) => getJeJuData(pageParam, category),
-    initialPageParam: 1,
+    initialPageParam: params,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       return lastPage && lastPage.length === 100
         ? lastPageParam + 1

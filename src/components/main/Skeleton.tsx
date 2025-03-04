@@ -5,6 +5,7 @@ const Skeleton = () => {
       <div className="p-2">
         <div className="mt-1 w-[130px] h-[20px] bg-[#999999] rounded-xl" />
         <div className="mt-1 w-full h-[20px] bg-[#999999] rounded-xl" />
+        <div className="mt-1 w-full h-[20px] bg-[#999999] rounded-xl" />
       </div>
     </div>
   );

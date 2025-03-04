@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation";
 const DetailContent = () => {
   const name = usePathname().split("/")[2];
   const { data, isLoading } = useGetDetailData(name);
-  console.log("dd", process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
   if (isLoading) return <div>Loading...</div>;
   return (
     <div className="w-full flex justify-center pt-[90px]">
@@ -32,7 +31,12 @@ const DetailContent = () => {
             </div>
             <div>
               <p>{item.introduction}</p>
-              <p>{item.alltag}</p>
+              <p>
+                {item.alltag
+                  ?.split(",")
+                  .flatMap((tag) => (tag.trim() ? `#${tag.trim()}` : []))
+                  .join(", ")}
+              </p>
             </div>
             <div>
               <LoadScriptNext

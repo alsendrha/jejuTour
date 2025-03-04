@@ -12,9 +12,6 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
-      fontFamily: {
-        EF_jejudoldam: ["EF_jejudoldam"],
-      },
     },
   },
   plugins: [],

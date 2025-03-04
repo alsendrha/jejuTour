@@ -2,12 +2,18 @@
 
 import { useSelected } from "@/store/store";
 import { menuList } from "@/utils/listData";
+import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import MainSelectedButton from "./MainSelectedButton";
 
-const MainSelect = () => {
+type MainSelectProps = {
+  setSelectedTag: (tag: string) => void;
+};
+
+const MainSelect = ({ setSelectedTag }: MainSelectProps) => {
   const { setIsSelected, setSelectedName } = useSelected();
   const [isOpen, setIsOpen] = useState(false);
+  const queryClient = useQueryClient();
 
   return (
     <div className="w-full relative flex justify-end mb-10">
@@ -23,6 +29,8 @@ const MainSelect = () => {
                   setIsSelected(item.code);
                   setIsOpen(false);
                   setSelectedName(item.name);
+                  setSelectedTag("");
+                  queryClient.removeQueries({ queryKey: ["jeju"] });
                 }}
               >
                 {item.name}
