@@ -21,7 +21,7 @@ const DetailMap = ({ item }: DetailMapProps) => {
     draggable: false,
     editable: false,
     visible: true,
-    radius: 80,
+    radius: 50,
     zIndex: 1,
   };
   const position = {
