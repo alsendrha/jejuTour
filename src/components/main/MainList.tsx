@@ -24,6 +24,7 @@ const MainList = () => {
     if (inView) fetchNextPage();
   }, [inView]);
   console.log(data);
+
   return (
     <div className="w-[1340px] max-[1355px]:w-[1020px] max-[1036px]:w-[700px] flex flex-col justify-center px-10">
       <MainSelect setSelectedTag={setSelectedTag} />
