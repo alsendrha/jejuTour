@@ -3,9 +3,9 @@ import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export const clientApi = axios.create({
-  baseURL: "https://api.visitjeju.net/vsjApi/contents/searchList",
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   params: {
-    apiKey: "8mbfp3rur332azyf",
+    apiKey: process.env.NEXT_PUBLIC_API_KEY,
     locale: "kr",
   },
   headers: {
